@@ -56,22 +56,22 @@ spec:
       containers:
       - name: minio
         image: quay.io/minio/minio
-		volumeMounts:
-		- name: minio-storage
-		  mountPath: /data
-		env:
-		- name: MINIO_ROOT_USER
-		  value: "minioadmin"
-		- name: MINIO_ROOT_PASSWORD
-		  value: "minioadmin"
-		command:
-		- "/bin/sh"
-		- "-c"
-		- "minio server /data --address :9000 --console-address :9001"
-	  volumes:
-	  - name: minio-storage
-	    persistentVolumeClaim:
-		  claimName: minio-pv-claim
+        volumeMounts:
+        - name: minio-storage
+          mountPath: /data
+          env:
+          - name: MINIO_ROOT_USER
+            value: "minioadmin"
+          - name: MINIO_ROOT_PASSWORD
+            value: "minioadmin"
+          command:
+          - "/bin/sh"
+          - "-c"
+          - "minio server /data --address :9000 --console-address :9001"
+        volumes:
+        - name: minio-storage
+          persistentVolumeClaim:
+	    claimName: minio-pv-claim
 ---
 apiVersion: v1
 kind: Service
