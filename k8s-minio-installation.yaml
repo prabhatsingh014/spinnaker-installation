@@ -71,7 +71,7 @@ spec:
         volumes:
         - name: minio-storage
           persistentVolumeClaim:
-	    claimName: minio-pv-claim
+            claimName: minio-pv-claim
 ---
 apiVersion: v1
 kind: Service
